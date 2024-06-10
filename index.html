@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism Lifestyle</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>    
+    <style>
+    html{
+        background-color:#f1f1f1;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0
+    }
+    header {
+        background-color: #333;
+        padding: 10px 0;
+    }
+            /*Navigation Bar*/
+    .navbar {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .navbar-brand {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fefefe;
+        font-family: 'Trebuchet MS';
+        padding-left: 10px;
+    }
+    .navbar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: right;
+    }
+    .navbar li {
+        margin: 0 15px;
+    }
+    .navbar a {
+        color: #fff;
+        padding: 14px 20px;
+        text-decoration: none;
+        text-align: center;
+    }
+    .navbar a:hover {
+        background-color: #09bdefca;
+    }
+    /* Slider */
+    .slider-container {
+            position: relative;
+            width: 100;
+            margin: 50px auto;
+        }
+        .slider {
+            display: none;
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .control-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fffefe;
+            font-size: 24px;
+            align-items: center;
+        }
+    main {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        text-align: center;
+    }
+    /*Product Catalog*/
+    .catalog-heading{
+      justify-content:center;
+    }
+    .catalog {
+        display: flex;
+        justify-content: center;
+        margin-top: 0px;
+        color: grey;
+    }
+    .product {
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        width: calc(25% - 40px);
+        box-sizing: border-box;
+    }
+    .product img {
+        max-width: 100%;
+        height: auto;
+    }
+    .button{
+        text-align: center;
+    }
+    .btn{
+        background-color: #0ea2c6;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+            /* Footer */
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        position: relative;
+    }
+    .footer-icons {
+        position: center;
+        top: 10px;
+        left: 50px;
+    }
+    .footer-icons img {
+        width: 30px;
+        margin-right: 10px;
+        position: center;
+        color: darkcyan;
+        padding: 15px 50px;
+    }
+    .footer-company {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+    }
+    .footer-company p {
+        margin: 0;
+        font-size: large;
+        font-weight: 400;
+    }
+</style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">Autism Lifestyle</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="slider-container">
+        <div class="slider">
+            <img src="img002.jpg" alt="Image 1">
+        </div>
+        <div class="slider">
+            <img src="img03.jpg" alt="Image 2">
+        </div>
+        <div class="slider">
+            <img src="img4.jpg" alt="Image 3">
+        </div>
+        <div class="controls">
+            <button class="control-btn" onclick="prevSlide()"><</button>
+            <button class="control-btn" onclick="nextSlide()">></button>
+        </div>
+        <div class="text">
+            Your Journey Begins Here
+        </div>
+    </div>
+    <main>
+      <div class="catalog-heading"><h2>Our Product Catalog</h2></div>
+        <div class="catalog">
+            <div class="product">
+                <img src="networking.png" alt="Communication">
+                <h2>Communication Package</h2>
+                <p>$40</p>
+        </div>
+            <div class="product">
+                <img src="potty-training.png" alt="Potty Training">
+                <h2>Potty Training Package</h2>
+                <p>$90</p>
+            </div>
+            <div class="product">
+                <img src="communication.png" alt="Language">
+                <h2>Language Package (Swahili)</h2>
+                <p>$25</p>
+            </div>
+            <div class="product">
+                <img src="management.png" alt="Behaviour Management">
+                <h2>Behavior Management Package</h2>
+                <p>$65</p>
+            </div>
+            <div class="product">
+                <img src="therapy.png" alt="Therapy">
+                <h2>Therapy Package</h2>
+                <p>$25</p>
+            </div>
+            <div class="product">
+                <img src="transition.png" alt="Transition">
+                <h2>Transition Package</h2>
+                <p>$65</p>
+            </div>
+        </div>
+        <div class="button">
+            <a href="services.html" class="btn">READ MORE</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-icons">
+            <a href="https://www.facebook.com/profile.php?id=100088209947928"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA=="><img src="insta.png" alt="Instagram"></a>
+        </div>
+        <div class="footer-company">
+            <p>&copy; 2024 Autism Lifestyle</p>
+        </div>
+    </footer>
+
+    <script >
+    let slideIndex = 0;
+        const slides = document.querySelectorAll('.slider');
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.style.display = 'none');
+            slides[index].style.display = 'block';
+        }
+        
+        function nextSlide() {
+            slideIndex++;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            showSlide(slideIndex);
+        }
+        
+        function prevSlide() {
+            slideIndex--;
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            }
+            showSlide(slideIndex);
+        }
+        
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>
