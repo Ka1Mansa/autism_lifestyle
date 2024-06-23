@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autism Lifestyle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,6 +30,26 @@
         color: #fefefe;
         font-family: 'Trebuchet MS';
         padding-left: 10px;
+        transform: translateY(-20px);
+        transition: opacity 1s ease, transform 1s ease;
+        position: relative;
+    }
+    .navbar-brand::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        height: 2px;
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+    .navbar-brand:hover::after{
+        background: #009087;
+        height: 2px;
+        bottom: -5px;
+        left: -5px;
+        right: -5px;
     }
     .navbar ul {
         list-style-type: none;
@@ -47,8 +68,15 @@
         text-align: center;
     }
     .navbar a:hover {
-        background-color: #09bdefca;
+        background-color: #009087;
     }
+    .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+        }
         .blog-post {
             background-color: #fff;
             padding: 20px;
@@ -91,41 +119,167 @@
         .comment:last-child {
             border-bottom: none;
         }
+        .form-container {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .form-container h2 {
+            color: #333;
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-container label {
+            margin: 10px 0 5px;
+        }
+        .form-container input, .form-container textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-buttons{
+            display: flex;
+            justify-content: center;
+            width: 100px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .form-buttons input[type="submit"], .form-buttons button {
+            width: 100px;
+            background: #333;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+            align-items: center;
+            flex: 1;
+        }
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-buttons input[type="submit"]:hover, .form-buttons button:hover {
+            background: #555;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .add-post-button {
+            background: #333;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .add-post-button:hover {
+            background: #555;
+        }
                  /* Footer */
-    footer {
-        background-color: #333;
-        color: white;
-        padding: 5px 0;
-        position: relative;
-    }
-    .footer-icons {
-        position: center;
-        top: 10px;
-        left: 50px;
-    }
-    .footer-icons img {
-        width: 30px;
-        margin-right: 10px;
-        position: center;
-        color: darkcyan;
-        padding: 15px 50px;
-    }
-    .footer-company {
-        position: absolute;
-        bottom: 10px;
-        right: 20px;
-    }
-    .footer-company p {
-        margin: 0;
-        font-size: large;
-        font-weight: 400;
-    }
+                 .footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 1rem;
+}
+
+.footer-contact h3,
+.footer-social h3,
+.footer-links h3 {
+    border-bottom: 2px solid #777;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-contact p,
+.footer-links ul,
+.footer-social ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-contact p a,
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li {
+    margin: 0.5rem 0;
+}
+
+.footer-contact p a:hover,
+.footer-links ul li a:hover {
+    color: #009087;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icon {
+    margin: 0 1rem; /* Increase margin for more space */
+    color: white; /* Default icon color */
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.facebook-icon:hover i {
+    color: blue;
+}
+
+.instagram-icon:hover i {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-bottom {
+    background-color: #222;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
     </style>
 </head>
 <body>
     <header>
         <div class="navbar">
-        <div class="navbar-brand">Autism Lifestyle</div>
+        <div class="navbar-brand" id="navbar-brand">Autism Lifestyle</div>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -135,34 +289,142 @@
             </ul>
         </div>
     </header>
-    <div class="blog-post">
-        <h1>Blog Post Title</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan urna. Duis tempus erat non nulla tempor, ac hendrerit sem varius.</p>
-    </div>
+    <div class="container">
+        <!-- Blog Posts -->
+        <div class="blog-post">
+            <h2>First Blog Post</h2>
+            <p class="date">Posted on June 16, 2024</p>
+            <img src="image1.jpg" alt="Blog Image 1">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="blog-post">
+            <h2>Second Blog Post</h2>
+            <p class="date">Posted on June 15, 2024</p>
+            <img src="image2.jpg" alt="Blog Image 2">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
-    <div class="comments-section">
-        <h2>Comments</h2>
-        <div id="comments"></div>
-        <div class="comment-form">
-            <h3>Add a Comment</h3>
-            <form id="commentForm">
+        <button class="add-post-button" onclick="showForm()">Add a New Post</button>
+
+                                <!-- Post Form -->>
+        <div class="form-container" id="form-container">
+            <?php
+            $servername = "localhost";
+            $username = "username";
+            $password = "password";
+            $dbname = "blog_db";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = "SELECT title, content, media_path, created_at FROM posts ORDER BY created_at DESC";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo '<div class="blog-post">';
+                    echo '<h2>' . htmlspecialchars($row['title']) . '</h2>';
+                    echo '<p class="date">Posted on ' . $row['created_at'] . '</p>';
+                    if (preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $row['media_path'])) {
+                        echo '<img src="' . htmlspecialchars($row['media_path']) . '" alt="Blog Image">';
+                    } elseif (preg_match('/\.(mp4|mov|avi|mkv)$/i', $row['media_path'])) {
+                        echo '<video controls>';
+                        echo '<source src="' . htmlspecialchars($row['media_path']) . '" type="video/' . pathinfo($row['media_path'], PATHINFO_EXTENSION) . '">';
+                        echo 'Your browser does not support the video tag.';
+                        echo '</video>';
+                    }
+                    echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
+                    echo '</div>';
+                }
+            } else {
+                echo 'No posts found.';
+            }
+
+            $conn->close();
+            ?>
+
+            <h2>Add a New Post</h2>
+            <form action="submit_post.php" method="post" enctype="multipart/form-data">
                 <input type="text" id="name" placeholder="Your Name" required>
                 <input type="email" id="email" placeholder="Your Email" required>
+                <input type="text" id="title" placeholder="Your Title" required>
                 <textarea id="comment" placeholder="Your Comment" rows="4" required></textarea>
-                <button type="submit">Submit</button>
+
+                <label for="media">Media Upload:</label>
+                <input type="file" id="media" name="media" accept="image/*,video/*">
             </form>
+            <div class = "form-buttons">
+                <input type="submit" value="Submit Post" >
+                <button type="button" onclick="hideForm()" >Cancel</button>
+            </div>
         </div>
     </div>
-    <footer>
-        <div class="footer-icons">
-            <a href="https://www.facebook.com/profile.php?id=100088209947928"><img src="facebook.png" alt="Facebook"></a>
-            <a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA=="><img src="insta.png" alt="Instagram"></a>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="brenda-kawira:autismlyfstyle@gmail.com">autismlyfstyle@gmail.com</a></p>
+                <p>Phone: <a href="tel:+254724235049">+254 724 23 50 49</a></p>
+            </div>
+            <div class="footer-section footer-social">
+                <h3>Follow Us</h3>
+                <ul class="social-icons">
+                    <li><a href="https://www.facebook.com/profile.php?id=100088209947928" class="social-icon facebook-icon"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA==" class="social-icon instagram-icon"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Our Blog Page</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-company">
-            <p>&copy; 2024 Autism Lifestyle</p>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Autism Lifestyle. All rights reserved.</p>
         </div>
     </footer>
     <script>
+        window.addEventListener('load', () => {
+    const name = document.getElementById('navbar-brand');
+
+    name.style.opacity = '1.5';
+    name.style.transform = 'translateY(0)';
+    });
+        function showForm() {
+            document.getElementById('form-container').style.display = 'block';
+            document.querySelector('.add-post-button').style.display = 'none';
+            window.scrollTo({
+                top: document.getElementById('form-container').offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        function hideForm() {
+            document.getElementById('form-container').style.display = 'none';
+            document.querySelector('.add-post-button').style.display = 'block';
+            window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        }
+        
         document.getElementById('commentForm').addEventListener('submit', function(event) {
             event.preventDefault();
 

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,39 +18,67 @@
             padding: 15px 0;
         }
                 /*Navigation Bar*/
-    .navbar {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .navbar-brand {
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar-brand {
         font-size: 24px;
         font-weight: bold;
         color: #fefefe;
         font-family: 'Trebuchet MS';
         padding-left: 10px;
+        transform: translateY(-20px);
+        transition: opacity 1s ease, transform 1s ease;
+        position: relative;
+        }
+    .navbar-brand::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        height: 2px;
+        background: transparent;
+        transition: all 0.3s ease;
     }
-    .navbar ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        align-items: right;
+    .navbar-brand:hover::after{
+        background: #009087;
+        height: 2px;
+        bottom: -5px;
+        left: -5px;
+        right: -5px;
     }
-    .navbar li {
-        margin: 0 15px;
-    }
-    .navbar a {
-        color: #fff;
-        padding: 14px 20px;
-        text-decoration: none;
-        text-align: center;
-    }
-    .navbar a:hover {
-        background-color: #09bdefca;
-    }
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: right;
+        }
+        .navbar li {
+            margin: 0 15px;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .navbar a:hover {
+            background-color: #009087;
+        }
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            }
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -56,124 +86,336 @@
             background: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 50px;
-        }
+            }
         h1 {
             text-align: center;
         }
-        form {
+        .wrapper {
+            display: inline-flex;
+            list-style: none;
+            height: 120px;
+            width: 100%;
+            padding-top: 40px;
+            font-family: "Poppins", sans-serif;
+            justify-content: center;
+        }
+
+        .wrapper .icon {
+            position: relative;
+            background: #fff;
+            color: #000;
+            border-radius: 50%;
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
             display: flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
-        }
-        label {
-            margin-top: 10px;
-        }
-        input, textarea {
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        button:hover {
-            background-color: #0056b3;
+
+        .wrapper .tooltip {
+            position: absolute;
+            top: 0;
+            font-size: 14px;
+            background: #fff;
+            color: #fff;
+            padding: 5px 8px;
+            border-radius: 5px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        .social {
-            text-align: center;
-            margin-top: 30px;
+
+        .wrapper .tooltip::before {
+            position: absolute;
+            content: "";
+            height: 8px;
+            width: 8px;
+            background: #fff;
+            bottom: -3px;
+            left: 50%;
+            transform: translate(-50%) rotate(45deg);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        .social a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #007BFF;
-            font-size: 24px;
-            position: right;
+
+        .wrapper .icon:hover .tooltip {
+            top: -45px;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
         }
-        .social a:hover {
-            color: #0056b3;
+
+        .wrapper .icon:hover span,
+        .wrapper .icon:hover .tooltip {
+            text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
         }
+
+        .wrapper .facebook:hover,
+        .wrapper .facebook:hover .tooltip,
+        .wrapper .facebook:hover .tooltip::before {
+            background: blue;
+            color: #fff;
+        }
+
+        .wrapper .email:hover,
+        .wrapper .email:hover .tooltip,
+        .wrapper .email:hover .tooltip::before {
+            background: #00b7d7;
+            color: #fff;
+        }
+
+        .wrapper .instagram:hover,
+        .wrapper .instagram:hover .tooltip,
+        .wrapper .instagram:hover .tooltip::before {
+            background: #e4405f;
+            color: #fff;
+        }
+        .wrapper .phone:hover,
+        .wrapper .phone:hover .tooltip,
+        .wrapper .phone:hover .tooltip::before {
+            background: #ec6701;
+            color: #fff;
+        }
+        .container {
+    max-width: 600px;
+    margin: 50px auto 50px; /* Center align the container */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text color */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+    min-height: 100px; /* Minimum height for textarea */
+}
+
+button[type="submit"] {
+    background-color: #009087; /* Greenish-blue background */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+button[type="submit"]:hover {
+    background-color: #00756a; /* Darker shade on hover */
+}
+
                 /* Footer */
-    footer {
-        background-color: #333;
-        color: white;
-        padding: 30px 0;
-        position: relative;
-    }
-    .footer-icons {
-        position: center;
-        top: 10px;
-        left: 50px;
-    }
-    .footer-icons img {
-        width: 35px;
-        margin-right: 20px;
-        position: center;
-        color: darkcyan;
-        padding: 15px 50px;
-    }
-    .footer-company {
-        position: absolute;
-        bottom: 10px;
-        right: 20px;
-    }
-    .footer-company p {
-        margin: 0;
-        font-size: large;
-        font-weight: 400;
-    }
+                .footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 1rem;
+}
+
+.footer-contact h3,
+.footer-social h3,
+.footer-links h3 {
+    border-bottom: 2px solid #777;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-contact p,
+.footer-links ul,
+.footer-social ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-contact p a,
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li {
+    margin: 0.5rem 0;
+}
+
+.footer-contact p a:hover,
+.footer-links ul li a:hover {
+    color: #009087;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icon {
+    margin: 0 1rem; /* Increase margin for more space */
+    color: white; /* Default icon color */
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.facebook-icon:hover i {
+    color: blue;
+}
+
+.instagram-icon:hover i {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-bottom {
+    background-color: #222;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
     </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-        <div class="navbar-brand">Autism Lifestyle</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="blog.html">Blog</a></li>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand" id="navbar-brand">Autism Lifestyle</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="hero-container">
+        <h1>Follow us on our Social Media Platforms</h1>
+        <ul class="wrapper">
+            <li class="icon facebook">
+                <span class="tooltip">Facebook</span>
+                <a href="https://www.facebook.com/profile.php?id=100088209947928">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </li>
+            <li class="icon instagram">
+                <span class="tooltip">Instagram</span>
+                <a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA==">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </li>
+            <li class="icon email">
+                <span class="tooltip">Email</span>
+                <a href="mailto:autismlyfstyle@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </li>
+            <li class="icon phone">
+                <span class="tooltip">Phone</span>
+                <a href="tel:+254724235049">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </li>
         </ul>
-    </nav>
-</header>
-<div class="container">
-    <h1>Contact Us</h1>
-    <form action="submit_form.php" method="post">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-
-        <button type="submit">Submit</button>
-    </form>
-
-    <div class="social">
-        <h2>Follow Us</h2>
-        <h3>Facebook</h3>
-        <a href="https://www.facebook.com/profile.php?id=100088209947928"><img src="facebook.png" alt="Facebook"></a>
-        <h4>Instagram</h4>
-        <a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA=="><img src="insta.png" alt="Instagram"></a>
     </div>
-</div>
-<footer>
-    <div class="footer-icons">
-        <a href="https://www.facebook.com/profile.php?id=100088209947928"><img src="facebook.png" alt="Facebook"></a>
-        <a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA=="><img src="insta.png" alt="Instagram"></a>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <form action="submit_form.php" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
     </div>
-    <div class="footer-company">
-        <p>&copy; 2024 Autism Lifestyle</p>
-    </div>
-  </footer>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="brenda-kawira:autismlyfstyle@gmail.com">autismlyfstyle@gmail.com</a></p>
+                <p>Phone: <a href="tel:+254724235049">+254 724 23 50 49</a></p>
+            </div>
+            <div class="footer-section footer-social">
+                <h3>Follow Us</h3>
+                <ul class="social-icons">
+                    <li><a href="https://www.facebook.com/profile.php?id=100088209947928" class="social-icon facebook-icon"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA==" class="social-icon instagram-icon"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Our Blog Page</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Autism Lifestyle. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener('load', () => {
+            const name = document.getElementById('navbar-brand');
+            name.style.opacity = '1.5';
+            name.style.transform = 'translateY(0)';
+        });
+    </script>
 </body>
 </html>
+

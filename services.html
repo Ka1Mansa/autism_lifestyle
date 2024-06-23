@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,12 +26,32 @@
           justify-content: space-between;
         }
         .navbar-brand {
-          font-size: 24px;
-          font-weight: bold;
-          color: #fefefe;
-          font-family: 'Trebuchet MS';
-          padding-left: 10px;
-        }
+        font-size: 24px;
+        font-weight: bold;
+        color: #fefefe;
+        font-family: 'Trebuchet MS';
+        padding-left: 10px;
+        transform: translateY(-20px);
+        transition: opacity 1s ease, transform 1s ease;
+        position: relative;
+    }
+    .navbar-brand::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        height: 2px;
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+    .navbar-brand:hover::after{
+        background: #009087;
+        height: 2px;
+        bottom: -5px;
+        left: -5px;
+        right: -5px;
+    }
         .navbar-nav ul {
           list-style-type: none;
           padding: 0;
@@ -46,14 +69,14 @@
           text-align: center;
         }
         .navbar-nav a:hover {
-          background-color: #09bdefca;
+          background-color: #009087;
         }
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
         }
         h1 {
             color: #333;
@@ -78,40 +101,100 @@
             padding-left: 20px;
         }
                     /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            position: relative;
-    }
-        .footer-icons {
-            position: center;
-            top: 10px;
-            left: 50px;
-        }
-        .footer-icons img {
-            width: 30px;
-            margin-right: 10px;
-            position: center;
-            color: darkcyan;
-            padding: 15px 50px;
-        }
-        .footer-company {
-            position: absolute;
-            bottom: 10px;
-            right: 20px;
-        }
-        .footer-company p {
-            margin: 0;
-            font-size: large;
-            font-weight: 400;
-        }
+                    .footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 1rem;
+}
+
+.footer-contact h3,
+.footer-social h3,
+.footer-links h3 {
+    border-bottom: 2px solid #777;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-contact p,
+.footer-links ul,
+.footer-social ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-contact p a,
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li {
+    margin: 0.5rem 0;
+}
+
+.footer-contact p a:hover,
+.footer-links ul li a:hover {
+    color: #009087;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icon {
+    margin: 0 1rem; /* Increase margin for more space */
+    color: white; /* Default icon color */
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.facebook-icon:hover i {
+    color: blue;
+}
+
+.instagram-icon:hover i {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-bottom {
+    background-color: #222;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
     </style>
 </head>
 <body>
   <header>
     <div class="navbar">
-      <div class="navbar-brand">Autism Lifestyle</div>
+      <div class="navbar-brand" id="navbar-brand">Autism Lifestyle</div>
       <div class="navbar-nav">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -125,7 +208,7 @@
   </header>
     <div class="container">
         <h1>Our Services</h1>
-        <div class="service">
+        <div class="service" id="communication">
           <h2>Communication Package</h2>
             <img src="networking.png" alt="Communication">
             <p>Cost: $40</p>
@@ -141,7 +224,7 @@
             </ul>
         </div>
 
-        <div class="service">
+        <div class="service" id="potty-training">
           <h2>Potty Training Package</h2>
             <img src="potty-training.png" alt="Potty Training">
             <p>Cost: $90</p>
@@ -157,7 +240,7 @@
             </ul>
         </div>
 
-        <div class="service">
+        <div class="service" id="language">
           <h2>Language Package (Swahili)</h2>
             <img src="communication.png" alt="Language">
             <p>Cost: $25</p>
@@ -173,7 +256,7 @@
             </ul>
         </div>
 
-        <div class="service">
+        <div class="service" id="behavior-management">
           <h2>Behavior Management Package</h2>
             <img src="management.png" alt="Behaviour Management">
             <p>Cost: $65</p>
@@ -188,7 +271,7 @@
             </ul>
         </div>
 
-        <div class="service">
+        <div class="service" id="therapy">
           <h2>Therapy Package</h2>
             <img src="therapy.png" alt="Therapy">
             <p>Cost: $25</p>
@@ -207,7 +290,7 @@
             </ul>
         </div>
 
-        <div class="service">
+        <div class="service" id="transition">
           <h2>Transition Package</h2>
             <img src="transition.png" alt="Transition">
             <p>Cost: $65</p>
@@ -223,14 +306,42 @@
             </ul>
         </div>
     </div>
-<footer>
-  <div class="footer-icons">
-    <a href="https://www.facebook.com/profile.php?id=100088209947928"><img src="facebook.png" alt="Facebook"></a>
-    <a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA=="><img src="insta.png" alt="Instagram"></a>
-  </div>
-  <div class="footer-company">
-    <p>&copy; 2024 Autism Lifestyle</p>
-  </div>
-</footer>
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-section footer-contact">
+              <h3>Contact Us</h3>
+              <p>Email: <a href="brenda-kawira:autismlyfstyle@gmail.com">autismlyfstyle@gmail.com</a></p>
+              <p>Phone: <a href="tel:+254724235049">+254 724 23 50 49</a></p>
+          </div>
+          <div class="footer-section footer-social">
+              <h3>Follow Us</h3>
+              <ul class="social-icons">
+                  <li><a href="https://www.facebook.com/profile.php?id=100088209947928" class="social-icon facebook-icon"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA==" class="social-icon instagram-icon"><i class="fab fa-instagram"></i></a></li>
+              </ul>
+          </div>
+          <div class="footer-section footer-links">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="services.html">Services</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                  <li><a href="blog.html">Our Blog Page</a></li>
+              </ul>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2024 Autism Lifestyle. All rights reserved.</p>
+      </div>
+  </footer>
+<script>
+   window.addEventListener('load', () => {
+    const name = document.getElementById('navbar-brand');
+
+    name.style.opacity = '1.5';
+    name.style.transform = 'translateY(0)';
+    });
+</script>
 </body>
 </html>
