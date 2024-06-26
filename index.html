@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autism Lifestyle</title>
+    <title>Autism Lifestyle | Home Page</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -18,7 +18,7 @@
     }
     header {
         background-color: #333;
-        padding: 10px 0;
+        padding: 15px 0 ;
     }
             /*Navigation Bar*/
     .navbar {
@@ -29,8 +29,24 @@
         justify-content: space-between;
     }
     .navbar-brand {
-        font-size: 24px;
-        font-weight: bold;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
+        background-position: 0;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 3s infinite linear;
+        animation-fill-mode: forwards;
+        -webkit-text-size-adjust: none;
+        font-weight: 600;
+        font-size: 18px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: "Poppins", sans-serif;
+        font-size: 26px;
+        font-weight: 300;
         color: #fefefe;
         font-family: 'Trebuchet MS';
         padding-left: 10px;
@@ -79,6 +95,50 @@
     .navbar a:hover {
         background-color: #009087;
     }
+    @-moz-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+    }
+    @-webkit-keyframes shine {
+    0% {
+        background-position: 0;
+    }
+    60% {
+        background-position: 180px;
+    }
+    100% {
+        background-position: 180px;
+    }
+    }
+    @-o-keyframes shine {
+    0% {
+        background-position: 0;
+    }
+    60% {
+        background-position: 180px;
+    }
+    100% {
+        background-position: 180px;
+    }
+    }
+    @keyframes shine {
+    0% {
+        background-position: 0;
+    }
+    60% {
+        background-position: 180px;
+    }
+    100% {
+        background-position: 180px;
+    }
+    }
     /* Slider */
     .slider-container {
             position: relative;
@@ -123,97 +183,179 @@
             align-items: center;
         }
         main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center; /* Center align content in main section */
-}
+            max-width: 1200px;
+            margin: 50px 50px 50px;
+            padding: 20px;
+            align-items: center;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+        }
 
-/* Catalog heading styles */
-.catalog-heading {
-    text-align: center;
-    margin-bottom: 2rem;
-}
+        /* Catalog heading styles */
+        .catalog-heading {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
 
-.catalog-heading h2 {
-    font-size: 2rem;
-    color: #333;
-}
+        .catalog-heading h2 {
+            font-size: 2rem;
+            color: #333;
+            text-decoration: underline;
+        }
 
-/* Catalog container styles */
-.catalog {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    justify-items: center; /* Center align grid items horizontally */
-    align-items: center; /* Center align grid items vertically */
-}
+        /* Catalog container styles */
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            justify-content: center;
+        }
 
-/* Product card styles */
-.product {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Added background-color transition */
-    padding-top: 1rem; /* Add space between icon and top margin of card */
-    text-align: center; /* Center align text within the product card */
-}
+        /* Product card styles */
+        .product {
+            background-color: #fff;
+            box-shadow: 2px 7px 7px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            padding-top: 1rem;
+            text-align: center;
+            width: 250px; /* Set a fixed width for product cards */
+            height: 250px; /* Set a fixed height for product cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-.product:hover {
-    transform: translateY(-5px);
-    background-color: #009087; /* Change background color on hover */
-}
+        .product:hover {
+            transform: translateY(-5px);
+            background-color: #009087;
+        }
 
-.product img {
-    width: 80px; /* Set the width of the image */
-    height: 80px; /* Set the height of the image */
-    display: block; /* Ensure image is block-level */
-    margin: 0 auto 0.5rem; /* Center align the image and add space below */
-}
+        .product img {
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 auto 0.5rem;
+            margin: 0 auto;
+            width: 100%;
+            height: 100px;
+            max-width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.8s ease;
+            background-position: 0px;
+            background-size: 200px;
+        }
 
-.product h2 {
-    font-size: 1.5rem;
-    padding: 1rem;
-    color: #333;
-    text-decoration: none; /* Remove underline from links */
-}
+        .product .title {
+            font-size: 1.5rem;
+            text-decoration: none;
+            width: 100%;
+            margin: 0;
+            text-align: center;
+            margin-top: 30px;
+            color: black;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-.product p {
-    font-size: 1.2rem;
-    padding: 0 1rem 1rem;
-    color: #777;
-}
-.see-all {
-    background-color: white;
-    color: #fff;
-    text-decoration: none; /* Remove underline from links */
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Added background-color transition */
-}
+        .product .cost {
+            font-size: 1.5rem;
+            padding: 0 1rem 1rem;
+            color: #777;
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 30px;
+            color: white;
+            font-weight: 500;
+            letter-spacing: 2px;
+            opacity: 0;
+            max-height: 0;
+            transition: all 0.3s ease;
+        }
 
-.see-all:hover {
-    transform: translateY(-5px);
-    background-color: #00766c; /* Darker shade of primary color on hover */
-}
+        .product:hover {
+        height: 280px;
+        }
 
-.see-all-content {
-    padding: 1rem;
-}
+        .product:hover .cost {
+        transition: all 0.3s ease;
+        opacity: 1;
+        max-height: 40px;
+        }
 
-.see-all-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
+        .product:hover img {
+        background-position: -120px;
+        transition: all 0.3s ease;
+        }
+        /* See All card styles */
+        .see-all {
+            width: 240px; /* Set to a quarter of the product card size */
+            height: 120px; /* Set to a quarter of the product card size */
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: auto; /* Center the See All card within its row */
+            box-shadow: 2px 7px 7px rgba(0, 0, 0, 0.1);
+        }
+        .see-all:hover {
+            transform: translateY(-5px);
+            background-color: #00766c;
+            border-radius: 10%; /* Transform to circle */
+            box-shadow: 15px 15px 15px rgba(0, 122, 204, 0.8); /* Glow effect */
+        }
 
-.see-all-content p {
-    font-size: 1.2rem;
-    margin: 0;
-}
+        .see-all-content {
+            padding: 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
 
-            /* Footer */
-            .footer {
+        .see-all .see-all-content .title {
+            font-size: 1.2rem; /* Adjust font size for better fit */
+            align-items: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            margin: 0;
+            text-align: center;
+            color: black;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-right: 40px;
+            text-transform: uppercase;
+        }
+
+        .see-all:hover .see-all-content .title {
+            color: white; /* Change text color on hover */
+            display: none;
+        }
+
+        .see-all:hover::after {
+            content: '\2192'; /* Right arrow icon */
+            font-size: 4rem;
+            color: white;
+            position: absolute;
+            align-items: center;
+        }
+                /*      FOOTER  SECTION     */
+                .footer {
     background-color: #333;
     color: white;
     padding: 2rem 0;
@@ -344,50 +486,49 @@
             <div class="product">
                 <a href="services.html#communication">
                     <img src="networking.png" alt="Communication">
-                    <h2>Communication Package</h2>
-                    <p>$40</p>
+                    <p class="title">Communication Package</p>
+                    <p class="cost">$40.00</p>
                 </a>
             </div>
             <div class="product">
                 <a href="services.html#potty-training">
                     <img src="potty-training.png" alt="Potty Training">
-                    <h2>Potty Training Package</h2>
-                    <p>$90</p>
+                    <p class="title">Potty Training Package</p>
+                    <p class="cost">$90.00</p>
                 </a>
             </div>
             <div class="product">
                 <a href="services.html#language">
                     <img src="communication.png" alt="Language">
-                    <h2>Language Package (Swahili)</h2>
-                    <p>$25</p>
+                    <p class="title">Language Package (Swahili)</p>
+                    <p class="cost">$25.00</p>
                 </a>
             </div>
             <div class="product">
                 <a href="services.html#behavior-management">
                     <img src="management.png" alt="Behaviour Management">
-                    <h2>Behavior Management Package</h2>
-                    <p>$65</p>
+                    <p class="title">Behavior Management Package</p>
+                    <p class="cost">$65.00</p>
                 </a>
             </div>
             <div class="product">
                 <a href="services.html#therapy">
                     <img src="therapy.png" alt="Therapy">
-                    <h2>Therapy Package</h2>
-                    <p>$25</p>
+                    <p class="title">Therapy Package</p>
+                    <p class="cost">$25.00</p>
                 </a>
             </div>
             <div class="product">
                 <a href="services.html#transition">
                     <img src="transition.png" alt="Transition">
-                    <h2>Transition Package</h2>
-                    <p>$65</p>
+                    <p class="title">Transition Package</p>
+                    <p class="cost">$65.00</p>
                 </a>
             </div>
-            <div class="product see-all">
+            <div class="see-all">
                 <a href="services.html">
                     <div class="see-all-content">
-                        <h2>See All Services</h2>
-                        <p>></p>
+                        <p class="title">See All Services</p>
                     </div>
         </div>
     </main>
@@ -395,7 +536,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section footer-contact">
-                <h3>Contact Us</h3>
+                <h3>Contacts</h3>
                 <p>Email: <a href="brenda-kawira:autismlyfstyle@gmail.com">autismlyfstyle@gmail.com</a></p>
                 <p>Phone: <a href="tel:+254724235049">+254 724 23 50 49</a></p>
             </div>
