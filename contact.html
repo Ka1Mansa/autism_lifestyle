@@ -131,168 +131,93 @@
         background-position: 180px;
     }
     }
-        .hero-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-            }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-            }
-        h1 {
-            text-align: center;
-        }
-        .wrapper {
-            display: inline-flex;
-            list-style: none;
-            height: 120px;
-            width: 100%;
-            padding-top: 40px;
-            font-family: "Poppins", sans-serif;
-            justify-content: center;
-        }
+        /*      MAIN SECTION    */
+    main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 50px 50px 100px;
+}
 
-        .wrapper .icon {
-            position: relative;
-            background: #fff;
-            color: #000;
-            border-radius: 50%;
-            margin: 10px;
-            width: 50px;
-            height: 50px;
-            font-size: 18px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .wrapper .tooltip {
-            position: absolute;
-            top: 0;
-            font-size: 14px;
-            background: #fff;
-            color: #fff;
-            padding: 5px 8px;
-            border-radius: 5px;
-            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .wrapper .tooltip::before {
-            position: absolute;
-            content: "";
-            height: 8px;
-            width: 8px;
-            background: #fff;
-            bottom: -3px;
-            left: 50%;
-            transform: translate(-50%) rotate(45deg);
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .wrapper .icon:hover .tooltip {
-            top: -45px;
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .wrapper .icon:hover span,
-        .wrapper .icon:hover .tooltip {
-            text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-        }
-
-        .wrapper .facebook:hover,
-        .wrapper .facebook:hover .tooltip,
-        .wrapper .facebook:hover .tooltip::before {
-            background: blue;
-            color: #fff;
-        }
-
-        .wrapper .email:hover,
-        .wrapper .email:hover .tooltip,
-        .wrapper .email:hover .tooltip::before {
-            background: #00b7d7;
-            color: #fff;
-        }
-
-        .wrapper .instagram:hover,
-        .wrapper .instagram:hover .tooltip,
-        .wrapper .instagram:hover .tooltip::before {
-            background: #e4405f;
-            color: #fff;
-        }
-        .wrapper .phone:hover,
-        .wrapper .phone:hover .tooltip,
-        .wrapper .phone:hover .tooltip::before {
-            background: #ec6701;
-            color: #fff;
-        }
-        .container {
-    max-width: 600px;
-    margin: 50px auto 50px; /* Center align the container */
-    background-color: #fff;
+.social-container {
+    flex: 1;
+    width: 100px;
+    background-color: #a1a1a1d5; /* Light grey background */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    height: 500px; /* Allow the container to adjust its height based on content */
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Increased gap for better spacing */
+  padding: 20px;
+}
+
+.contact-info div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-info .icon {
+    font-size: 30px;
+}
+
+.contact-info .title {
+    font-size: 18px;
+    text-decoration: none;
+    color: #000;
+    padding: 0 20px;
+}
+
+.contact-info .title:hover {
+    text-decoration: underline;
+}
+
+.container {
+    flex: 2;
+    min-width: 250px;
+    padding: 10px 0 20px auto;
 }
 
 .container h1 {
-    text-align: center;
     margin-bottom: 20px;
-    color: #333; /* Dark gray text color */
 }
 
-form {
+.container form {
     display: flex;
     flex-direction: column;
 }
 
-label {
-    font-weight: bold;
-    margin-bottom: 8px;
+.container form label {
+    margin-top: 10px;
 }
 
-input, textarea {
+.container form input,
+.container form textarea {
+    margin-top: 5px;
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 4px;
     font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-textarea {
-    resize: vertical; /* Allow vertical resizing of textarea */
-    min-height: 100px; /* Minimum height for textarea */
-}
-
-button[type="submit"] {
-    background-color: #009087; /* Greenish-blue background */
+.container form button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007BFF;
     color: white;
     border: none;
-    padding: 12px 20px;
     cursor: pointer;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
-button[type="submit"]:hover {
-    background-color: #00756a; /* Darker shade on hover */
+.container form button:hover {
+    background-color: #0056b3;
 }
 
                 /* Footer */
@@ -399,47 +324,43 @@ button[type="submit"]:hover {
             </ul>
         </nav>
     </header>
-    <div class="hero-container">
-        <h1>Follow us on our Social Media Platforms</h1>
-        <ul class="wrapper">
-            <li class="icon facebook">
-                <span class="tooltip">Facebook</span>
-                <a href="https://www.facebook.com/profile.php?id=100088209947928">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </li>
-            <li class="icon instagram">
-                <span class="tooltip">Instagram</span>
-                <a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA==">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </li>
-            <li class="icon email">
-                <span class="tooltip">Email</span>
-                <a href="brenda-kawira:autismlyfstyle@gmail.com">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </li>
-            <li class="icon phone">
-                <span class="tooltip">Phone</span>
-                <a href="tel:+254724235049">
-                    <i class="fas fa-phone"></i>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="container">
-        <h1>Contact Us</h1>
-        <form action="submit_form.php" method="post">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+    <main>
+        <div class="social-container">
+            <h1>Get In Touch</h1>
+            <div class="contact-info">
+                <div class="social">
+                    <i class="icon fab fa-facebook-f"></i>
+                    <a class="title" href="https://www.facebook.com/profile.php?id=100088209947928">Facebook</a>
+                </div>
+                <div class="social">
+                    <i class="icon fab fa-instagram"></i>
+                    <a class="title" href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA==">Instagram</a>
+                </div>
+                <div class="social">
+                    <i class="icon fas fa-phone"></i>
+                    <a class="title" href="tel:+254724235049">Telephone</a>
+                </div>
+                <div class="social">
+                    <i class="icon fas fa-envelope"></i>
+                    <a class="title" href="brenda-kawira:autismlyfstyle@gmail.com">E-Mail</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Contact Us</h1>
+            <form action="submit_form.php" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section footer-contact">
