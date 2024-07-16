@@ -133,13 +133,15 @@
     }
         .container {
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 30px 30px;
             background: white;
             padding: 10px;
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
         }
         h1 {
             color: #333;
+            text-align: center;
+            text-transform: uppercase;
         }
         .service {
             margin-bottom: 20px;
@@ -156,10 +158,31 @@
             margin-right: 20px;
             object-fit: cover;
         }
+        .cost{
+            text-align: end;
+            font-weight: 700;
+        }
         .benefits {
             list-style-type: disc;
             padding-left: 20px;
         }
+        .cart {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
                     /* Footer */
                     .footer {
     background-color: #333;
@@ -266,12 +289,13 @@
       </div>
     </div>
   </header>
+  <main>
     <div class="container">
         <h1>Our Services</h1>
         <div class="service" id="communication">
           <h2>Communication Package</h2>
             <img src="networking.png" alt="Communication">
-            <p>Cost: $40</p>
+            <p class="cost">Cost: $40</p>
             <p>Our communication training package is designed to help children with autism develop the communication skills they need to connect with others and succeed in everyday life. Our experienced therapists will work with your child to develop a personalized plan tailored to their specific needs, helping them build the foundation for effective communication.</p>
             <h3>Benefits:</h3>
             <ul class="benefits">
@@ -366,6 +390,13 @@
             </ul>
         </div>
     </div>
+    <div class="cart">
+      <h2>Shopping Cart</h2>
+      <ul id="cart-items"></ul>
+      <p>Total: $<span id="total-price">0.00</span></p>
+      <button onclick="checkout()">Checkout</button>
+  </div>
+  </main>
     <footer class="footer">
       <div class="footer-container">
           <div class="footer-section footer-contact">
@@ -402,6 +433,41 @@
     name.style.opacity = '1.5';
     name.style.transform = 'translateY(0)';
     });
+
+    let cart = [];
+let totalPrice = 0;
+
+function addToCart(product, price) {
+    cart.push({ product, price });
+    updateCart();
+}
+
+function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    cartItems.innerHTML = '';
+    totalPrice = 0;
+
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.product} - $${item.price.toFixed(2)}`;
+        cartItems.appendChild(li);
+        totalPrice += item.price;
+    });
+
+    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+}
+
+function checkout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+    }
+
+    alert(`Checkout complete! Total: $${totalPrice.toFixed(2)}`);
+    cart = [];
+    updateCart();
+}
+
 </script>
 </body>
 </html>

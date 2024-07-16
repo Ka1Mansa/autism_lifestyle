@@ -1,0 +1,316 @@
+<html>
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #212428;
+    overflow-x: clip;
+}
+
+ul {
+    list-style: none;
+}
+
+.tabs {
+    width: 80%;
+    height: 100px;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    overflow: hidden;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.tabs li {
+    background-color: #212327;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c4cfde;
+    font-family: 'Poppins', sans-serif;
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    cursor: pointer;
+}
+
+.tabs li:hover {
+    background: linear-gradient(145deg, #1e2024, #23272b);
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    color: #009087;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.active {
+    background: linear-gradient(145deg, #1e2024, #23272b);
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    color: #009087 !important;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.contents {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    background: linear-gradient(145deg, #1e2024, #23272b);
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    animation: moving 1s ease;
+    -webkit-animation: moving 1s ease;
+}
+
+.box img {
+    flex: 1;
+    margin: 5px 5px;
+    color: white;
+    width: 30%;
+    height: 60%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.box h3 {
+    flex: 2;
+    color: #c4cfde;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+form{
+    flex: 3;
+}
+
+label {
+flex: 2;
+margin-top: 10px;
+color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+margin-top: 5px;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 3px;
+width: 100%;
+box-sizing: border-box;
+}
+
+textarea {
+resize: vertical;
+}
+
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
+@keyframes moving {
+    from {
+        transform: translateX(-50px);
+        -webkit-transform: translateX(-50px);
+        -moz-transform: translateX(-50px);
+        -ms-transform: translateX(-50px);
+        -o-transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0px);
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        -o-transform: translateX(0px);
+        opacity: 1;
+    }
+}
+.submit{
+padding: 25px 50px;
+margin: 45px 600px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+border-radius:8px;
+border: 2px solid black;
+transition-duration: 0.4s;
+}
+
+.submit:hover {
+background-color: #009087;
+color: white;
+}
+.cancel{
+padding:20px 20px;
+margin: 20px 80px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+border-radius:8px;
+border: 2px solid black;
+transition-duration: 0.4s;
+}
+.cancel:hover {
+background-color: #009087;
+color: white;
+}
+</style>
+<body>
+    <section>
+    <ul class="tabs">
+        <li class="active" data-id="0">Blog Post</li>
+        <li data-id="1">Photo Upload</li>
+        <li data-id="2">Video Upload</li>
+        <button class="cancel" onclick="location.href='blog.html'">Cancel</button>
+    </ul>
+
+    <div class="contents">
+
+        <div class="box show" data-content="0">
+            <div class="blog-tab">
+                <img src="blog.svg" alt="">
+                <h3>Add a New Post</h3>
+                <form action="submit_post.php" method="post" enctype="multipart/form-data">
+                    <input type="text" id="name" placeholder="Blog Post Title" required>
+                    <textarea id="comment" placeholder="Comments" rows="14" required></textarea>
+                    <!--ensure you place time and date of blog posted--->
+                </form>
+            </div>
+        </div>
+
+        <div class="box hide" data-content="1">
+            <div class="photo-tab">
+                <img src="image.svg" alt="">
+                <h3>Photo Media Upload </h3>
+                <label for="media">Photo Upload:</label>
+                <input type="file" id="media" name="media" accept="image/*,video/*">
+            </div>
+        </div>
+
+        <div class="box hide" data-content="2">
+            <div class="video-tab">
+                <h3>Video Upload</h3>
+                <img src="video.svg" alt="">
+                <label for="media">Video Upload:</label>
+                <input type="file" id="media" name="media" accept="image/*,video/*">
+                <!---Add section for video url------>
+                
+            </div>
+        </div>
+    </div>
+    </section>
+<button class="submit">Submit</button>
+<script>
+
+'use strict';
+const tabs = document.querySelectorAll('[data-id]');
+const contents = document.querySelectorAll('[data-content]');
+let id = 0;
+
+tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+        tabs[id].classList.remove('active');
+        tab.classList.add('active');
+        id = tab.getAttribute('data-id');
+        contents.forEach(function (box) {
+            box.classList.add('hide');
+            if (box.getAttribute('data-content') == id){
+                box.classList.remove('hide');
+                box.classList.add('show');
+            }
+        });
+    });
+});
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const imageFile = document.getElementById('image').files[0];
+            const videoFile = document.getElementById('video').files[0];
+
+            const blogData = {
+                title: title,
+                content: content
+            };
+
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    blogData.image = e.target.result;
+                    if (videoFile) {
+                        const reader2 = new FileReader();
+                        reader2.onload = function(e) {
+                            blogData.video = e.target.result;
+                            saveBlogData(blogData);
+                        };
+                        reader2.readAsDataURL(videoFile);
+                    } else {
+                        saveBlogData(blogData);
+                    }
+                };
+                reader.readAsDataURL(imageFile);
+            } else if (videoFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    blogData.video = e.target.result;
+                    saveBlogData(blogData);
+                };
+                reader.readAsDataURL(videoFile);
+            } else {
+                saveBlogData(blogData);
+            }
+        });
+
+        function saveBlogData(blogData) {
+            localStorage.setItem('blogData', JSON.stringify(blogData));
+            window.location.href = 'blog.html';
+        }
+</script>
+</body>
+</html>

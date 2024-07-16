@@ -313,7 +313,11 @@
     font-size: 2rem;
     transition: color 0.3s ease;
 }
-
+.login-icon{
+    height: 30px;
+    width: 30px;
+    color: white;
+}
 .facebook-icon:hover i {
     color: blue;
 }
@@ -323,6 +327,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+.login-icon:hover {
+    background-color: yellow;
 }
 
 .footer-bottom {
@@ -349,86 +356,14 @@
             </ul>
         </div>
     </header>
+    <h1>My Blog Page</h1>
     <div class="container">
         <!-- Blog Posts -->
         <div class="blog-post">
-            <h2>First Blog Post</h2>
-            <p class="date">Posted on June 16, 2024</p>
-            <img src="image1.jpg" alt="Blog Image 1">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
-            <video controls>
-                <source src="video1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+
         </div>
         <div class="blog-post">
-            <h2>Second Blog Post</h2>
-            <p class="date">Posted on June 15, 2024</p>
-            <img src="image2.jpg" alt="Blog Image 2">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
-            <video controls>
-                <source src="video2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
 
-        <button class="add-post-button" onclick="showForm()">Add a New Post</button>
-
-                                <!-- Post Form -->>
-        <div class="form-container" id="form-container">
-            <?php
-            $servername = "localhost";
-            $username = "username";
-            $password = "password";
-            $dbname = "blog_db";
-
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $sql = "SELECT title, content, media_path, created_at FROM posts ORDER BY created_at DESC";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo '<div class="blog-post">';
-                    echo '<h2>' . htmlspecialchars($row['title']) . '</h2>';
-                    echo '<p class="date">Posted on ' . $row['created_at'] . '</p>';
-                    if (preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $row['media_path'])) {
-                        echo '<img src="' . htmlspecialchars($row['media_path']) . '" alt="Blog Image">';
-                    } elseif (preg_match('/\.(mp4|mov|avi|mkv)$/i', $row['media_path'])) {
-                        echo '<video controls>';
-                        echo '<source src="' . htmlspecialchars($row['media_path']) . '" type="video/' . pathinfo($row['media_path'], PATHINFO_EXTENSION) . '">';
-                        echo 'Your browser does not support the video tag.';
-                        echo '</video>';
-                    }
-                    echo '<p>' . nl2br(htmlspecialchars($row['content'])) . '</p>';
-                    echo '</div>';
-                }
-            } else {
-                echo 'No posts found.';
-            }
-
-            $conn->close();
-            ?>
-
-            <h2>Add a New Post</h2>
-            <form action="submit_post.php" method="post" enctype="multipart/form-data">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="email" id="email" placeholder="Your Email" required>
-                <input type="text" id="title" placeholder="Your Title" required>
-                <textarea id="comment" placeholder="Your Comment" rows="4" required></textarea>
-
-                <label for="media">Media Upload:</label>
-                <input type="file" id="media" name="media" accept="image/*,video/*">
-            </form>
-            <div class = "form-buttons">
-                <input type="submit" value="Submit Post" >
-                <button type="button" onclick="hideForm()" >Cancel</button>
-            </div>
         </div>
     </div>
     <footer class="footer">
@@ -443,6 +378,7 @@
                 <ul class="social-icons">
                     <li><a href="https://www.facebook.com/profile.php?id=100088209947928" class="social-icon facebook-icon"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="https://www.instagram.com/auti_smlifestyle?igsh=MzRlODBiNWFlZA==" class="social-icon instagram-icon"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="log_in.html" class="login"><img class="social-icon login-icon" src="blog.svg" href="log_in.html"></i></a></li>
                 </ul>
             </div>
             <div class="footer-section footer-links">
@@ -458,6 +394,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 Autism Lifestyle. All rights reserved.</p>
+            <a href="log_in.html">Log In</a>
         </div>
     </footer>
     <script>
@@ -467,43 +404,6 @@
     name.style.opacity = '1.5';
     name.style.transform = 'translateY(0)';
     });
-        function showForm() {
-            document.getElementById('form-container').style.display = 'block';
-            document.querySelector('.add-post-button').style.display = 'none';
-            window.scrollTo({
-                top: document.getElementById('form-container').offsetTop,
-                behavior: 'smooth'
-            });
-        }
-
-        function hideForm() {
-            document.getElementById('form-container').style.display = 'none';
-            document.querySelector('.add-post-button').style.display = 'block';
-            window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-        }
-        
-        document.getElementById('commentForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const comment = document.getElementById('comment').value;
-
-            if (name && email && comment) {
-                const commentSection = document.getElementById('comments');
-                const newComment = document.createElement('div');
-                newComment.classList.add('comment');
-                newComment.innerHTML = `<strong>${name}</strong> <br> ${comment}`;
-                commentSection.appendChild(newComment);
-
-                document.getElementById('commentForm').reset();
-            } else {
-                alert('Please fill in all fields.');
-            }
-        });
     </script>
 </body>
 </html>
