@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            display:flex;
+            height :100px;
+            width:160px;
+            margin: 10px 450px;
+            padding: 10px 10px;
+            align-items: center;
+            place-items: center;
+            place-content: center;
+
+        }
+        .checkout-container {
+            width: 70%;
+            margin: 50px auto;
+            background-color: #f5f3f3;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding-bottom: 20px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            margin-top: 40px;
+        }
+        .order-summary {
+            margin: 20px 20px 20px;
+
+        }
+
+        #order-items {
+            list-style-type: none;
+            padding: 20px 20px;
+            margin: 20px 20px;
+            gap: 50px;
+        }
+
+        #order-items li {
+            padding: 10px 10px;
+            margin: 10px 10px;
+            border-bottom: 2px solid #b7b7b7;
+        }
+        .remove-btn{
+            width: 15%;
+            overflow: hidden;
+            padding: 20px 20px;
+            margin: 20px 500px;
+            border-radius: 20px;
+        }
+        .quanity-btn{
+            width:10px;
+            border-radius: 100px;
+        }
+        .total{
+            font-size: 40px;
+            padding: 20px 20px;
+            margin: 0px 40px;
+        }
+
+        /*      Payment Form Section        */
+        .payment-form {
+            margin: 30px 30px;
+            background: #f4f4f4;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .payment-form input, .payment-form select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /*          Payment Form Tab       */
+        .tab {
+            overflow: hidden;
+            border-bottom: 1px solid #ddd;
+            display:flex;
+            flex-direction:row;
+            gap:10px;
+            padding: 20px 20px;
+            margin: 20px 20px;
+        }
+
+        .tab button {
+            background-color: transparent;
+            float:right;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+
+        .tab button:hover {
+            background-color: #009087;
+            transition: all 0.3s ease;
+        }
+
+        .tab button.active {
+            background-color: #007d75;
+            border:5px solid black;
+            border-style: groove;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 20px 20px;
+            margin: 20px 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .quantity-label{
+            width:30px;
+        }
+        .tablinks{
+            width: 100px;
+            padding: 10px;
+            margin: 0px 50px;
+            background-color: #007BFF;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .total{
+            font-size: 40px;
+            padding: 20px 20px;
+            margin: 0px 40px;
+        }
+        #submit-button{
+            width:120px;
+            height:0px;
+            padding: 0px 0px;
+            margin: 30px 920px ;
+            border-radius: 20px;
+        }
+        #submit-button:hover{
+            width:150px;
+            height:50px;
+            border-radius: 40px;
+            transform: all 2.1s ease;
+        }
+
+       
+
+
+
+    </style>
+</head>
+<body>
+    <img src="autism-lifestyle-logo.jpg" class="logo">
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <ul id="order-items">
+                <li data-price="10.00">
+                    <img src="item1.jpg" alt="Item 1" class="item-image">
+                    Item 1 - $<span class="item-price">10.00</span>
+                    <div class="quantity-control">
+                        <button onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" value="1" min="1" readonly class="quantity-label">
+                        <button onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                    <button onclick="removeItem(this)" class="remove-btn">Remove</button>
+                </li>
+                <li data-price="15.00">
+                    <img src="item2.jpg" alt="Item 2" class="item-image">
+                    Item 2 - $<span class="item-price">15.00</span>
+                    <div class="quantity-control">
+                        <button onclick="changeQuantity(this, -1)" class="quantity-btn">-</button>
+                        <input type="number" value="1" min="1" readonly class="quantity-label">
+                        <button onclick="changeQuantity(this, 1)" class="quantity-btn">+</button>
+                    </div>
+                    <button onclick="removeItem(this)" class="remove-btn">Remove</button>
+                </li>
+                <li data-price="7.50">
+                    <img src="item3.jpg" alt="Item 3" class="item-image">
+                    Item 3 - $<span class="item-price">7.50</span>
+                    <div class="quantity-control">
+                        <button onclick="changeQuantity(this, -1)" class="quantity-btn">-</button>
+                        <input type="number" value="1" min="1" readonly class="quantity-label">
+                        <button onclick="changeQuantity(this, 1)" class="quantity-btn">+</button>
+                    </div>
+                    <button onclick="removeItem(this)" class="remove-btn">Remove</button>
+                </li>
+            </ul>
+            <p class="total">Total: $<span id="total-price">32.50</span></p>
+        </div>
+    </div>
+
+        <!-- Payment Form -->
+    <div class="payment-form">
+        <h2>Payment Information</h2>
+            <!-- Payment Method Tabs -->
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'CreditCard')" id="defaultOpen">Credit Card</button>
+                <button class="tablinks" onclick="openTab(event, 'MobileMoney')">Mobile Money</button>
+                <button class="tablinks" onclick="openTab(event, 'PayPal')">PayPal</button>
+            </div>
+
+            <!-- Credit Card Form -->
+            <div id="CreditCard" class="tabcontent">
+                <form action="/submit-order" method="post">
+                    <!-- Billing Information -->
+                    <div class="billing-info">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+
+                        <label for="zip">ZIP Code:</label>
+                        <input type="text" id="zip" name="zip" required>
+                    </div>
+
+                    <!-- Credit Card Information -->
+                    <div class="card-info">
+                        <label for="card-number">Card Number:</label>
+                        <input type="text" id="card-number" name="card-number" required>
+
+                        <label for="expiration-date">Expiration Date:</label>
+                        <input type="text" id="expiration-date" name="expiration-date" required placeholder="MM/YY">
+
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv" required>
+                    </div>
+
+                    <button type="submit" id="submit-button">Place Order</button>
+                </form>
+            </div>
+
+            <!-- Mobile Money Form -->
+            <div id="MobileMoney" class="tabcontent">
+                <form action="/submit-order" method="post">
+                    <label for="mobile-number">Mobile Number:</label>
+                    <input type="text" id="mobile-number" name="mobile-number" required>
+
+                    <label for="provider">Provider:</label>
+                    <select id="provider" name="provider" required>
+                        <option value="mpesa">MPESA</option>
+                        <option value="airtel">Airtel Money</option>
+                        <!-- Add more providers as needed -->
+                    </select>
+
+                    <button type="submit" id="submit-button">Place Order</button>
+                </form>
+            </div>
+
+            <!-- PayPal Form -->
+            <div id="PayPal" class="tabcontent">
+                <form action="/submit-order" method="post">
+                    <label for="paypal-email">PayPal Email:</label>
+                    <input type="email" id="paypal-email" name="paypal-email" required>
+
+                    <button type="submit" id="submit-button">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+           document.addEventListener('DOMContentLoaded', () => {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const checkoutItemsContainer = document.querySelector('.checkout-items');
+  let totalCost = 0;
+
+  cartItems.forEach(item => {
+    const checkoutItem = document.createElement('div');
+    checkoutItem.className = 'checkout-item';
+
+    const checkoutItemContent = `
+      <div class="checkout-item-name">${item.name}</div>
+      <img class="checkout-item-image" src="${item.imageSrc}" alt="${item.name}">
+      <div class="checkout-item-cost">$${item.cost.toFixed(2)}</div>
+    `;
+
+    checkoutItem.innerHTML = checkoutItemContent;
+    checkoutItemsContainer.appendChild(checkoutItem);
+
+    totalCost += item.cost;
+  });
+
+  document.getElementById('total-cost').textContent = totalCost.toFixed(2);
+});
+
+function removeItem(button) {
+            var item = button.parentElement;
+            var itemPrice = parseFloat(item.getAttribute('data-price'));
+            var quantity = parseInt(item.querySelector('input[type=number]').value);
+            var totalPriceElement = document.getElementById('total-price');
+            var currentTotal = parseFloat(totalPriceElement.textContent);
+            var newTotal = currentTotal - (itemPrice * quantity);
+
+            item.remove();
+            totalPriceElement.textContent = newTotal.toFixed(2);
+        }
+
+        function changeQuantity(button, change) {
+            var quantityInput = button.parentElement.querySelector('input[type=number]');
+            var currentQuantity = parseInt(quantityInput.value);
+            var newQuantity = currentQuantity + change;
+            if (newQuantity < 1) return;
+            quantityInput.value = newQuantity;
+
+            var item = button.parentElement.parentElement;
+            var itemPrice = parseFloat(item.getAttribute('data-price'));
+            var totalPriceElement = document.getElementById('total-price');
+            var currentTotal = parseFloat(totalPriceElement.textContent);
+            var newTotal = currentTotal + (itemPrice * change);
+            totalPriceElement.textContent = newTotal.toFixed(2);
+        }
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+</body>
+</html>
